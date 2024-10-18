@@ -1,0 +1,24 @@
+{
+    "name": "gad20241013.Injection",
+    "rootNamespace": "gad20241013.Injection",
+    "references": [
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
+        "GUID:eb0454beb5b448f4da0daecd32c57202",
+        "GUID:5bce17d119177214889d4306719d307f",
+        "GUID:37261417415219a48bf83d55bad8364c",
+        "GUID:305f406d376aebb488a82b264cc1c026",
+        "GUID:a37245afb6b9ad543ae721020a864408",
+        "GUID:11303c3d210c62548b5daa69da499910",
+        "GUID:9b2f7c436f688734d87e64f9061183a2"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
