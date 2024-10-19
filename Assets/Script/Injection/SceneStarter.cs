@@ -10,6 +10,8 @@ using gad20241013.Item;
 using gad20241013.ItemSelector;
 using gad20241013.Telop;
 using gad20241013.SceneFader;
+using Item;
+using Tarahiro;
 
 
 namespace gad20241013.Injection
@@ -25,6 +27,10 @@ namespace gad20241013.Injection
             {
                 itemList.Add(itemProvider.GetItem(i));
             }
+
+            var masterDataProvider = new MasterDataProvider();
+            IMasterDataOrderedDictionary<IItemMasterDataRecord> itemMasterData = new ItemMasterData(masterDataProvider);
+            
 
             var itemMenu = new ItemMenu();
             var talkManager = new TalkManager();
