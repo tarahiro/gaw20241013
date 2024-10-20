@@ -3,7 +3,6 @@ using Tarahiro;
 using Tarahiro.Editor.XmlImporter;
 using System.Collections.Generic;
 using UnityEditor;
-using Item;
 
 namespace Ccc.Editor
 {

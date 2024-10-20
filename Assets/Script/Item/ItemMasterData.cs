@@ -4,9 +4,8 @@ using Tarahiro.MasterData;
 using System;
 using UnityEngine;
 using System.Collections.Generic;
-using gad20241013.Item;
 
-namespace Item
+namespace gad20241013.Item
 {
     public class ItemMasterData : MasterDataOrderedDictionary<ItemMasterData.Record, IItemMasterDataRecord>
     {

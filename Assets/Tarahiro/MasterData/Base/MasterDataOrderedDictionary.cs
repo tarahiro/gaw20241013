@@ -46,14 +46,13 @@ namespace Tarahiro.MasterData
 		// データの列挙子を取得
 		public IEnumerable<InterfaceType> Enumerable => m_List.Select<DataType, InterfaceType>(data => data);
 
-        // データをロードしてMasterDataProviderに登録する
+        // データをロードする
         protected void InitializeImpl(string dataPath)
 		{
 			var data = Resources.Load<MasterDataOrderedDictionary<DataType, InterfaceType>>(dataPath);
 			m_List = data.m_List;
             m_Dictionary = data.m_Dictionary;
 			Log.DebugAssert(data != null, $"ScriptableObjectの初期化に失敗しました。リソース：{dataPath} が存在しません。");
-			// masterDataProvider.Register<IMasterDataOrderedDictionary<InterfaceType>>(data);
 		}
 
 		// エディタ内でのデータ操作

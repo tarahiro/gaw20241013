@@ -1,7 +1,7 @@
-﻿namespace Tarahiro
+﻿namespace gad20241013.Item
 {
     /// <summary>
-    /// 用語集のデータ一つあたりのマスターです。
+    /// アイテムのデータ一つあたりのマスターです。
     /// </summary>
     public interface IItemMaster
     {

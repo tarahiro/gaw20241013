@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Tarahiro.MasterData;
-using Item;
 
 namespace gad20241013.Item
 {

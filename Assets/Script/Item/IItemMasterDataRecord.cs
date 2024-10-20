@@ -1,7 +1,7 @@
 ﻿using Tarahiro.MasterData;
 using Tarahiro;
 
-namespace Item
+namespace gad20241013.Item
 {
     /// <summary>
     /// 用語集のマスターデータの1件あたりのレコードのインターフェースです。

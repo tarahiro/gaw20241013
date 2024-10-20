@@ -10,7 +10,6 @@ using gad20241013.Item;
 using gad20241013.ItemSelector;
 using gad20241013.Telop;
 using gad20241013.SceneFader;
-using Item;
 using Tarahiro;
 
 
