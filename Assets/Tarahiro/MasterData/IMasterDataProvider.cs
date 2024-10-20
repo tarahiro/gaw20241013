@@ -1,25 +1,25 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UniRx;
+﻿using System.Collections;
 using UnityEngine;
 
-namespace Tarahiro
+namespace Tarahiro.MasterData
 {
-    public interface IMasterDataProvider
-    {
-        IDisposable Register<T>(T instance) where T : class;
+    public interface IMasterDataProvider<T> where T : IIndexable, IIdentifiable
+    {  
+        /// <summary>
+       /// Indexからデータを取得します。
+       /// <para> * 存在しない場合、Tのdefaultを返します。</para>
+       /// </summary>
+        T TryGetFromIndex(int index);
 
-        void Clear();
+        /// <summary>
+        /// IDからデータを取得します。
+        /// <para> * 存在しない場合、Tのdefaultを返します。</para>
+        /// </summary>
+        T TryGetFromId(string id);
 
-        bool IsRegistered<T>() where T : class;
-
-        T Resolve<T>() where T : class;
-
-        IObservable<T> ResolveAsync<T>() where T : class;
-
-        IMasterDataList<T> ResolveList<T>() where T : IIndexable;
-
-        IMasterDataOrderedDictionary<T> ResolveOrderedDictionary<T>() where T : IIndexable, IIdentifiable;
+        /// <summary>
+        /// データの総数を取得します。
+        /// </summary>
+        int Count { get; }
     }
 }

@@ -13,7 +13,9 @@ namespace Tarahiro.MasterData
 		, IMasterDataOrderedDictionary<InterfaceType>
         where InterfaceType : IIndexable, IIdentifiable
 		where DataType : InterfaceType
-	{
+	{	
+		//Dictionaryの実体
+
 		// データの実体
 		[SerializeField] protected DataType[] m_List = null;
 		[SerializeField] protected Dictionary<string, int> m_Dictionary = null;
@@ -45,11 +47,13 @@ namespace Tarahiro.MasterData
 		public IEnumerable<InterfaceType> Enumerable => m_List.Select<DataType, InterfaceType>(data => data);
 
         // データをロードしてMasterDataProviderに登録する
-        protected static void InitializeImpl(IMasterDataProvider masterDataProvider, string dataPath)
+        protected void InitializeImpl(string dataPath)
 		{
 			var data = Resources.Load<MasterDataOrderedDictionary<DataType, InterfaceType>>(dataPath);
+			m_List = data.m_List;
+            m_Dictionary = data.m_Dictionary;
 			Log.DebugAssert(data != null, $"ScriptableObjectの初期化に失敗しました。リソース：{dataPath} が存在しません。");
-			masterDataProvider.Register<IMasterDataOrderedDictionary<InterfaceType>>(data);
+			// masterDataProvider.Register<IMasterDataOrderedDictionary<InterfaceType>>(data);
 		}
 
 		// エディタ内でのデータ操作

@@ -28,8 +28,7 @@ namespace gad20241013.Injection
                 itemList.Add(itemProvider.GetItem(i));
             }
 
-            var masterDataProvider = new MasterDataProvider();
-            IMasterDataOrderedDictionary<IItemMasterDataRecord> itemMasterData = new ItemMasterData(masterDataProvider);
+            IMasterDataOrderedDictionary<IItemMasterDataRecord> itemMasterData = new ItemMasterData();
             
 
             var itemMenu = new ItemMenu();

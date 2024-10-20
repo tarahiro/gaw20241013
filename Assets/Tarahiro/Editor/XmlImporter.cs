@@ -103,35 +103,6 @@ namespace Tarahiro.Editor.XmlImporter
 			return new Workbook(path);
 		}
 
-		// リストをアセットにエクスポート
-		public static void ExportList<TTable, TData>(string resourceDataPath, IReadOnlyList<TData> records)
-			where TTable : MasterDataList<TData>
-			where TData : IIndexable
-		{
-			string path = "Assets/Resources/" + resourceDataPath + ".asset";
-			var asset = AssetDatabase.LoadAssetAtPath<TTable>(path);
-			// 存在しなかったら作成
-			if (asset == null)
-			{
-				var directoryPath = Path.GetDirectoryName(path);
-
-				// フォルダがなければ生成
-				if (!Directory.Exists(directoryPath))
-				{
-					Directory.CreateDirectory(directoryPath);
-				}
-
-				asset = ScriptableObject.CreateInstance<TTable>();
-				AssetDatabase.CreateAsset(asset, path);
-			}
-
-			asset.SettableRecords = records;
-			asset.hideFlags = HideFlags.NotEditable;
-
-			EditorUtility.SetDirty(asset);
-			AssetDatabase.SaveAssets();
-			AssetDatabase.Refresh();
-		}
 
 		// 辞書をアセットにエクスポート
 		public static bool ExportOrderedDictionary<TTable, TData, TInterface>(string resourceDataPath, IReadOnlyList<TData> records)

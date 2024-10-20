@@ -12,9 +12,9 @@ namespace Item
     {
         public const string c_DataPath = "Data/Item";
 
-        public ItemMasterData(IMasterDataProvider masterDataProvider)
+        public void CreateItemMasterData()
         {
-            InitializeImpl(masterDataProvider, c_DataPath);
+            InitializeImpl(c_DataPath);
         }
 
         [Serializable]
