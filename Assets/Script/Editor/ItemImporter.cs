@@ -13,14 +13,10 @@ namespace Ccc.Editor
         enum Columns
         {
             Index = 0,
-            Id,
-            Title = 3,
-            GenreName = 5,
-            DescriptionName = 7,
-            IconPath = 9,
-            ScreenShotCenterPath = 11,
-            ScreenShotRightTopPath =13,
-            ScreenShotRightButtomPath = 15
+            Id = 1,
+            DisplayName = 2,
+            Description = 3,
+            SpritePath = 4,
 
         }
 
@@ -61,13 +57,9 @@ namespace Ccc.Editor
                         string id = sheet[row, (int)Columns.Id].String;
                         ItemDataList.Add(new ItemMasterData.Record(index, id)
                         {
-                            SettableTitleName = sheet[row, (int)Columns.Title].String,
-                            SettableGenreName = sheet[row, (int)Columns.GenreName].String,
-                            SettableDescriptionName = sheet[row, (int)Columns.DescriptionName].String,
-                            SettableIconPath= sheet[row, (int)Columns.IconPath].String,
-                            SettableScreenShotCenterPath = sheet[row, (int)Columns.ScreenShotCenterPath].String,
-                            SettableScreenShotRightTopPath = sheet[row, (int)Columns.ScreenShotRightTopPath].String,
-                            SettableScreenShotRightButtomPath = sheet[row, (int)Columns.ScreenShotRightButtomPath].String,
+                            SettableDisplayName = sheet[row, (int)Columns.DisplayName].String,
+                            SettableDescription = sheet[row, (int)Columns.Description].String,
+                            SettableSpritePath = sheet[row, (int)Columns.SpritePath].String,
                         });
                     }
                 }

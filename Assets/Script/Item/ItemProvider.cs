@@ -4,55 +4,42 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using gad20241013;
+using Tarahiro.MasterData;
 
 namespace gad20241013.Item { 
-    public class ItemProvider : IItemProvider
+    public class ItemProvider : ISomethingProvider<IItem>
     {
-        List<IItem> itemMaster;
+        List<IItem> itemList;
 
-        public ItemProvider()
+        public ItemProvider(IMasterDataProvider<IItemMasterDataRecord> masterDataProvider)
         {
-            itemMaster = new List<IItem>();
-            itemMaster.Add(new FireStone());
-            itemMaster.Add(new IceStone());
-            itemMaster.Add(new WindStone());
-            itemMaster.Add(new PastMirror());
-            itemMaster.Add(new FutureMirror());
-            itemMaster.Add(new GreatBar());
-            itemMaster.Add(new PoisonCure());
-            itemMaster.Add(new ParalysisCure());
+            itemList = new List<IItem>();
 
-            //マスターデータチェック
-            for (int i = 0; i < itemMaster.Count; i++)
+            for(int i = 0;i < masterDataProvider.Count; i++)
             {
-                for (int j = i + 1; j < itemMaster.Count; j++)
-                {
-                    if (itemMaster[i].Id == itemMaster[j].Id)
-                    {
-                        Debug.Log(itemMaster[i].ProductName + "と" +  itemMaster[j].ProductName + "のIdが重複しています");
-                    }
-                    if (itemMaster[i].ProductName == itemMaster[j].ProductName)
-                    {
-                        Debug.Log(itemMaster[i].Id + "のアイテムと" + itemMaster[j].Id + "のアイテムのProductNameが重複しています");
-                    }
-                }
+                itemList.Add(new Item(masterDataProvider.TryGetFromIndex(i).GetMaster()));
             }
         }
 
-        public IItem GetItem(int id)
+        /// <summary>
+        /// Indexからデータを取得します。
+        /// </summary>
+        public IItem TryGetFromIndex(int index)
         {
-            if (id < 0 || id >= itemMaster.Count)
-            {
-                Debug.Log("不正な値です");
-                return null;
-            }
-
-            return itemMaster[id];
+            return itemList[index];
         }
 
-        public int MaxItemNumber()
+        /// <summary>
+        /// IDからデータを取得します。
+        /// </summary>
+        public IItem TryGetFromId(string id)
         {
-            return itemMaster.Count;
+            return itemList.First(x => x.Id == id);
         }
+
+        /// <summary>
+        /// データの総数を取得します。
+        /// </summary>
+        public int Count => itemList.Count;
     }
 }

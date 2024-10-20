@@ -52,7 +52,7 @@ namespace gad20241013.ItemSelector
                 
                 var itemMenuItem = obj.GetComponent<IItemMenuItem>();
                 itemMenuItem.SetName(m_items[i].DisplayName);
-                itemMenuItem.SetSprite(Resources.Load<Sprite>(ItemSelectorUtil.itemSpritePath + m_items[i].ProductName));
+                itemMenuItem.SetSprite(Resources.Load<Sprite>(ItemSelectorUtil.itemSpritePath + m_items[i].Id));
                 itemMenuItem.SetPosition((Vector2)ItemMenuItemInitialPosition.GetComponent<RectTransform>().localPosition + new Vector2(i * (merginX + obj.GetComponent<RectTransform>().sizeDelta.x), 0));
                 itemMenuItem.UnFocus();
 

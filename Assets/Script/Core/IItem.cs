@@ -6,9 +6,9 @@ namespace gad20241013
 {
     public interface IItem
     {
-        public int Id { get; }
-        string ProductName { get; }
+        string Id { get; }
         string DisplayName { get; }
         string Description { get; }
+        string SpritePath { get; }
     }
 }

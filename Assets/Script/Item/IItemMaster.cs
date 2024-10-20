@@ -8,14 +8,10 @@
         /// <summary>
         /// このデータのIDを取得します。
         /// </summary>
-        int Id { get; }
+        string Id { get; }
 
-        string TitleName { get; }
-        string GenreName { get; }
-        string DescriptionName { get; }
-        string IconPath { get; }
-        string ScreenShotCenterPath { get; }
-        string ScreenShotRightTopPath { get; }
-        string ScreenShotRightButtonPath { get; }
+        string DisplayName { get; }
+        string Description { get; }
+        string SpritePath { get; }
     }
 }

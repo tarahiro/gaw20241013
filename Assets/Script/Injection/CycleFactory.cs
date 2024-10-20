@@ -65,7 +65,7 @@ namespace gad20241013.Injection
             talkSourceListWhenCleared.Add(new TalkSource() { talkCharacter = monster, talkSentence = "うぴゃっ！？　つめたいスラ…\r\nあれ、身体が楽になってきたスラ！\r\nぽよんぽ！" });
             talkSourceListWhenCleared.Add(new TalkSource() { talkCharacter = m_doctor, talkSentence = "使用中の魔具が身体から出ないように、\r\n今日は激しい戦闘は控えてください。\r\nお大事にどうぞ。" });
 
-            return new Cycle(m_talkManager, m_itemDialog, monster, m_itemProvider.GetItem(1),m_clearTelop, talkSourceListBeforeSelectItem, talkSourceListAfterSelectItem, talkSourceListWhenCleared, talkSourceListWhenFailed);
+            return new Cycle(m_talkManager, m_itemDialog, monster, m_itemProvider.TryGetFromId("IceStone"),m_clearTelop, talkSourceListBeforeSelectItem, talkSourceListAfterSelectItem, talkSourceListWhenCleared, talkSourceListWhenFailed);
 
         }
 
@@ -89,7 +89,7 @@ namespace gad20241013.Injection
             talkSourceListWhenCleared.Add(new TalkSource() { talkCharacter = monster, talkSentence = "鏡の中に…ドロの…足が…見える？\r\nあれ、痛くないバケ！" });
             talkSourceListWhenCleared.Add(new TalkSource() { talkCharacter = m_doctor, talkSentence = "毎日5分くらい、この鏡を見るようにしてください。\r\n1週間もあれば治りますよ。\r\nお大事に。" });
 
-            return new Cycle(m_talkManager, m_itemDialog, monster, m_itemProvider.GetItem(3), m_clearTelop, talkSourceListBeforeSelectItem, talkSourceListAfterSelectItem, talkSourceListWhenCleared, talkSourceListWhenFailed);
+            return new Cycle(m_talkManager, m_itemDialog, monster, m_itemProvider.TryGetFromId("PastMirror"), m_clearTelop, talkSourceListBeforeSelectItem, talkSourceListAfterSelectItem, talkSourceListWhenCleared, talkSourceListWhenFailed);
 
         }
 
@@ -124,7 +124,7 @@ namespace gad20241013.Injection
             talkSourceListWhenCleared.Add(new TalkSource() { talkCharacter = dragon, talkSentence = "これは抜かないドラァ！\r\n闘いの勲章ドラァ！！\r\n" });
             talkSourceListWhenCleared.Add(new TalkSource() { talkCharacter = m_doctor, talkSentence = "(まあ…ダガーの毒も抜けてるだろうし、いいか…)" });
 
-            return new Cycle(m_talkManager, m_itemDialog, dragon, m_itemProvider.GetItem(6), m_clearTelop, talkSourceListBeforeSelectItem, talkSourceListAfterSelectItem, talkSourceListWhenCleared, talkSourceListWhenFailed);
+            return new Cycle(m_talkManager, m_itemDialog, dragon, m_itemProvider.TryGetFromId("PoisonCure"), m_clearTelop, talkSourceListBeforeSelectItem, talkSourceListAfterSelectItem, talkSourceListWhenCleared, talkSourceListWhenFailed);
 
         }
         Cycle CreateFakeCycle()

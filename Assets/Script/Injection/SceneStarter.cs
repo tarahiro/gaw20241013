@@ -19,18 +19,16 @@ namespace gad20241013.Injection
     {
         public void Start()
         {
+
             //必要なインスタンスを生成
-            var itemProvider = new ItemProvider();
-            List<IItem> itemList = new List<IItem>();
-            for(int i = 0; i < itemProvider.MaxItemNumber(); i++)
-            {
-                itemList.Add(itemProvider.GetItem(i));
-            }
-
-
             var itemMasterDataProvider = new ItemMasterDataProvider();
-            Debug.Log(itemMasterDataProvider.TryGetFromIndex(0).GetMaster().DescriptionName);
-            Debug.Log(itemMasterDataProvider.TryGetFromIndex(2).GetMaster().ScreenShotRightButtonPath);
+            var itemProvider = new ItemProvider(itemMasterDataProvider);
+
+            List<IItem> itemList = new List<IItem>();
+            for (int i = 0; i < itemProvider.Count; i++)
+            {
+                itemList.Add(itemProvider.TryGetFromIndex(i));
+            }
 
             var itemMenu = new ItemMenu();
             var talkManager = new TalkManager();
