@@ -3,42 +3,56 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TMPro;
 using UnityEngine;
 
 namespace gad20241013.Talk
 {
     public class TalkCounter : MonoBehaviour
     {
-        bool isStart = false;
+
         string m_text = "";
-        string m_currentText;
+        TextMeshProUGUI m_textMeshProUGUI;
+        string m_seLabel;
+        KeyCode m_decide;
+        float m_textIntervalTime;
+
+
+        bool isStart = false;
         int textCount = 0;
         float m_Tick = 0;
-        const float defaultTextIntervalTime = .1f;
-        float m_textIntervalTime;
-        ITalkCountRecieve m_talkCountRecieve;
 
-        public void StartTextCount(ITalkCountRecieve talkCountRecieve, string text, float textIntervalTime = defaultTextIntervalTime)
+        public void StartTextCount(string text, TextMeshProUGUI textMeshProUGUI, string SeLabel, KeyCode decide, float textIntervalTime)
         {
-            m_talkCountRecieve = talkCountRecieve;
+            m_text = text;
+            m_textMeshProUGUI = textMeshProUGUI;
+            m_seLabel = SeLabel;
+            m_decide = decide;
+            m_textIntervalTime = textIntervalTime;
+
             isStart = true;
             m_text = text;
             textCount = 0;
             m_Tick = 0;
-            m_textIntervalTime = textIntervalTime;
-            m_currentText = "";
-            SoundManager.PlaySEWithLoop("Text");
+            m_textMeshProUGUI.text = "";
+
+            SoundManager.PlaySEWithLoop(m_seLabel);
 
         }
+
         private void Update()
         {
             if (isStart && !IsEndTextCount)
             {
+                if (Input.GetKeyDown(m_decide))
+                {
+                    SkipText();
+                }
+
                 m_Tick += Time.deltaTime;
                 if(m_Tick > m_textIntervalTime)
                 {
-                    m_currentText += m_text[textCount];
-                    m_talkCountRecieve.SetText(m_currentText);
+                    m_textMeshProUGUI.text += m_text[textCount];
 
                     m_Tick = 0;
                     textCount++;
@@ -54,7 +68,7 @@ namespace gad20241013.Talk
 
         public void SkipText()
         {
-            m_talkCountRecieve.SetText(m_text);
+            m_textMeshProUGUI.text = m_text;
             End();
         }
 
@@ -62,7 +76,6 @@ namespace gad20241013.Talk
 
         void End()
         {
-            m_talkCountRecieve.End();
             SoundManager.StopLoopSE();
             IsEndTextCount = true;
         }

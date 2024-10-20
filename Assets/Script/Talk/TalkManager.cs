@@ -49,15 +49,7 @@ namespace gad20241013.Talk
 
 
             //セリフの文字を一つずつ出す
-            var t = new GameObject().AddComponent<TalkCounter>();
-            t.StartTextCount(this, source.talkSentence);
-
-            var cts = new CancellationTokenSource();
-
-            RecieveSkipInput(t, cts.Token).Forget();
-            await UniTask.WaitUntil(() => t.IsEndTextCount);
-            cts.Cancel();
-            GameObject.Destroy(t.gameObject);
+            await TextUtil.DisplayTextByCharacter(source.talkSentence, m_talkTmp, "Text", KeyCode.Z);
 
             //決定キー押したらセリフ終了
             m_TalkKeyObject.SetActive(true);
