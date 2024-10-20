@@ -27,8 +27,10 @@ namespace gad20241013.Injection
                 itemList.Add(itemProvider.GetItem(i));
             }
 
-            IMasterDataOrderedDictionary<IItemMasterDataRecord> itemMasterData = new ItemMasterData();
-            
+
+            var itemMasterDataProvider = new ItemMasterDataProvider();
+            Debug.Log(itemMasterDataProvider.TryGetFromIndex(0).GetMaster().DescriptionName);
+            Debug.Log(itemMasterDataProvider.TryGetFromIndex(2).GetMaster().ScreenShotRightButtonPath);
 
             var itemMenu = new ItemMenu();
             var talkManager = new TalkManager();

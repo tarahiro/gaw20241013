@@ -11,11 +11,6 @@ namespace gad20241013.Item
     {
         public const string c_DataPath = "Data/Item";
 
-        public void CreateItemMasterData()
-        {
-            InitializeImpl(c_DataPath);
-        }
-
         [Serializable]
         public class Record : IItemMasterDataRecord, IItemMaster
         {
