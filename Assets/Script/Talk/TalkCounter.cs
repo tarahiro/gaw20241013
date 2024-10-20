@@ -27,7 +27,7 @@ namespace gad20241013.Talk
             m_Tick = 0;
             m_textIntervalTime = textIntervalTime;
             m_currentText = "";
-            SoundManager.PlaySEWithLoop(SoundManager.SELabel.Text);
+            SoundManager.PlaySEWithLoop("Text");
 
         }
         private void Update()

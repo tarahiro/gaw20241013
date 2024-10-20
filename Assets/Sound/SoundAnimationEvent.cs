@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SoundAnimationEvent:MonoBehaviour
 {
-    public void PlaySE(SoundManager.SELabel m_SElabel)
+    public void PlaySE(string seLabel)
     {
-        SoundManager.PlaySE(m_SElabel);
+        SoundManager.PlaySE(seLabel);
     }
 }

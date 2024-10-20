@@ -3,6 +3,7 @@ using Tarahiro;
 using Tarahiro.Editor.XmlImporter;
 using System.Collections.Generic;
 using UnityEditor;
+using Tarahiro.MasterData;
 
 namespace Ccc.Editor
 {
@@ -66,7 +67,7 @@ namespace Ccc.Editor
             }
 
             // データ出力
-            XmlImporter.ExportOrderedDictionary<ItemMasterData, ItemMasterData.Record, IItemMasterDataRecord>(ItemMasterData.c_DataPath, ItemDataList);
+            XmlImporter.ExportOrderedDictionary<ItemMasterData, ItemMasterData.Record, IMasterDataRecord<IItemMaster>>(ItemMasterData.c_DataPath, ItemDataList);
         }
     }
 }

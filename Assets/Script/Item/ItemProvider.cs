@@ -11,7 +11,7 @@ namespace gad20241013.Item {
     {
         List<IItem> itemList;
 
-        public ItemProvider(IMasterDataProvider<IItemMasterDataRecord> masterDataProvider)
+        public ItemProvider(IMasterDataProvider<IMasterDataRecord<IItemMaster>> masterDataProvider)
         {
             itemList = new List<IItem>();
 

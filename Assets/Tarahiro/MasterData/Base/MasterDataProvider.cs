@@ -9,11 +9,10 @@ namespace Tarahiro.MasterData
         where DataType : InterfaceType
     {
         protected MasterDataOrderedDictionary<DataType, InterfaceType> m_Dictionary;
-        protected virtual string m_PathName { get; }
 
-        public MasterDataProvider()
+        public MasterDataProvider(string pathName)
         {
-            m_Dictionary = Resources.Load<MasterDataOrderedDictionary<DataType, InterfaceType>>(m_PathName);
+            m_Dictionary = Resources.Load<MasterDataOrderedDictionary<DataType, InterfaceType>>(pathName);
         }
 
         public InterfaceType TryGetFromIndex(int index)

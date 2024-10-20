@@ -5,9 +5,9 @@ using Tarahiro.MasterData;
 
 namespace gad20241013.Item
 {
-    public class ItemMasterDataProvider : MasterDataProvider<ItemMasterData.Record, IItemMasterDataRecord>
+    public class ItemMasterDataProvider : MasterDataProvider<ItemMasterData.Record, IMasterDataRecord<IItemMaster>>
     {
-
-        protected override string m_PathName => ItemMasterData.c_DataPath;
+        public ItemMasterDataProvider(string pathName) : base (pathName) { 
+        }
     }
 }

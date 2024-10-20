@@ -11,6 +11,7 @@ using gad20241013.ItemSelector;
 using gad20241013.Telop;
 using gad20241013.SceneFader;
 using Tarahiro;
+using Tarahiro.MasterData;
 
 
 namespace gad20241013.Injection
@@ -21,7 +22,7 @@ namespace gad20241013.Injection
         {
 
             //必要なインスタンスを生成
-            var itemMasterDataProvider = new ItemMasterDataProvider();
+            var itemMasterDataProvider = new ItemMasterDataProvider("Data/Item");
             var itemProvider = new ItemProvider(itemMasterDataProvider);
 
             List<IItem> itemList = new List<IItem>();

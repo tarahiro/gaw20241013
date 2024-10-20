@@ -62,7 +62,7 @@ namespace gad20241013.Talk
             //決定キー押したらセリフ終了
             m_TalkKeyObject.SetActive(true);
             await UniTask.WaitUntil(() => Input.GetKeyDown(KeyCode.Z));
-            SoundManager.PlaySE(SoundManager.SELabel.Enter);
+            SoundManager.PlaySE("Enter");
             ClearText();
         }
 

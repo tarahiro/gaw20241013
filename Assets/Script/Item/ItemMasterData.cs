@@ -7,12 +7,11 @@ using System.Collections.Generic;
 
 namespace gad20241013.Item
 {
-    public class ItemMasterData : MasterDataOrderedDictionary<ItemMasterData.Record, IItemMasterDataRecord>
-    {
+    public class ItemMasterData : MasterDataOrderedDictionary<ItemMasterData.Record, IMasterDataRecord<IItemMaster>> { 
         public const string c_DataPath = "Data/Item";
 
         [Serializable]
-        public class Record : IItemMasterDataRecord, IItemMaster
+        public class Record : IMasterDataRecord<IItemMaster>, IItemMaster
         {
             public Record(int index, string id)
             {

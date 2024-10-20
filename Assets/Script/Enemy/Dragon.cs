@@ -35,7 +35,7 @@ namespace gad20241013.Enemy
             //“G‚ğ¶¬
             m_enemy = GameObject.Instantiate(Resources.Load<GameObject>(EnemyUtil.EnemyPrefabPath + resourceName), AppearPosition, Quaternion.identity);
 
-            SoundManager.PlaySEWithLoop(SoundManager.SELabel.FootWalk);
+            SoundManager.PlaySEWithLoop("Walk");
             //“G‚ª•”‰®‚É“ü‚é
             await LMotion.Create(AppearPosition, EnteredPosition, 1f)
                 .BindToPosition(m_enemy.transform);

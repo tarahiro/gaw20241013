@@ -18,20 +18,15 @@ public class SoundManager
 /// <summary>
 /// とりあえずこの2つを使えればOK
 /// </summary>
-    public static GameObject PlaySE(SELabel SEName, MixerLabel MixerName = MixerLabel.EventSE, bool IsLoop = false)
+    public static GameObject PlaySE(string seLabel, MixerLabel MixerName = MixerLabel.EventSE, bool IsLoop = false)
     {
-        return SoundMgr.Instance.dummyInstantiate(Resources.Load<GameObject>("SoundManager/" + MixerDicionary[MixerName] + "Source"), Resources.Load<AudioClip>(seString + SEDictionary[SEName]), IsLoop);
+        return SoundMgr.Instance.dummyInstantiate(Resources.Load<GameObject>("SoundManager/" + MixerDicionary[MixerName] + "Source"), Resources.Load<AudioClip>(SoundMgr.Instance.seDictionary[seLabel]), IsLoop);
     }
 
-    public static GameObject PlaySE(string SEName, MixerLabel MixerName = MixerLabel.EventSE, bool IsLoop = false)
-    {
-        return SoundMgr.Instance.dummyInstantiate(Resources.Load<GameObject>("SoundManager/" + MixerDicionary[MixerName] + "Source"), Resources.Load<AudioClip>(seString + SEName), IsLoop);
-    }
-
-    public static GameObject PlaySEWithChangePitch(SELabel SEName, MixerLabel MixerName = MixerLabel.EventSE, bool IsLoop = false, float ChangePitch = SoundMgr.changePitch)
+    public static GameObject PlaySEWithChangePitch(string seLabel, MixerLabel MixerName = MixerLabel.EventSE, bool IsLoop = false, float ChangePitch = SoundMgr.changePitch)
     {
 
-        return SoundMgr.Instance.dummyInstantiateWithChangePitch(Resources.Load<GameObject>("SoundManager/" + MixerDicionary[MixerName] + "Source"), Resources.Load<AudioClip>(seString + SEDictionary[SEName]), IsLoop,ChangePitch);
+        return SoundMgr.Instance.dummyInstantiateWithChangePitch(Resources.Load<GameObject>("SoundManager/" + MixerDicionary[MixerName] + "Source"), Resources.Load<AudioClip>(SoundMgr.Instance.seDictionary[seLabel]), IsLoop,ChangePitch);
 
     }
 
@@ -89,14 +84,14 @@ public class SoundManager
         SoundMgr.Instance.Mute(mixerLabelEnum, true, changeTime);
     }
 
-    public static GameObject PlaySEWithLoop(SELabel SEName, MixerLabel MixerName = MixerLabel.EventSE)
+    public static GameObject PlaySEWithLoop(string seLabel, MixerLabel MixerName = MixerLabel.EventSE)
     {
-        return SoundMgr.Instance.dummyInstantiateLoopSE(Resources.Load<GameObject>("SoundManager/" + MixerDicionary[MixerName] + "Source"), Resources.Load<AudioClip>(seString + SEDictionary[SEName]));
+        return SoundMgr.Instance.dummyInstantiateLoopSE(Resources.Load<GameObject>("SoundManager/" + MixerDicionary[MixerName] + "Source"), Resources.Load<AudioClip>(SoundMgr.Instance.seDictionary[seLabel]));
     }
 
-    public static GameObject PlayRefleshSE(SELabel SEName, MixerLabel MixerName = MixerLabel.EventSE, bool IsLoop = false)
+    public static GameObject PlayRefleshSE(string seLabel, MixerLabel MixerName = MixerLabel.EventSE, bool IsLoop = false)
     {
-        return SoundMgr.Instance.dummyInstantiateRefleshSE(Resources.Load<GameObject>("SoundManager/" + MixerDicionary[MixerName] + "Source"), Resources.Load<AudioClip>(seString + SEDictionary[SEName]), IsLoop);
+        return SoundMgr.Instance.dummyInstantiateRefleshSE(Resources.Load<GameObject>("SoundManager/" + MixerDicionary[MixerName] + "Source"), Resources.Load<AudioClip>(SoundMgr.Instance.seDictionary[seLabel]), IsLoop);
     }
 
 
@@ -170,15 +165,6 @@ public class SoundManager
         BFSpecialSE
     }
 
-    public static Dictionary<SELabel, string> SEDictionary = new Dictionary<SELabel, string>()
-    {
-        {SELabel.Enter,"enter" },
-        {SELabel.Cancel ,"choice_cancel" },
-        {SELabel.Cursor ,"choice" },
-        {SELabel.FootWalk ,"walk" },
-        {SELabel.Text ,"text" },
-    };
-
     public static Dictionary<MixerLabel, string> MixerDicionary = new Dictionary<MixerLabel, string>()
     {
         {MixerLabel.EventSE, "EventSE" },
@@ -188,11 +174,6 @@ public class SoundManager
         {MixerLabel.BFSpecialSE,"BFSpecialSE" }
     };
 
-    public static Dictionary<string, string> SceneBGMDictionary = new Dictionary<string, string>()
-    {
-        {"Title","gymno_loop" },
-        {"Field","g_aria" }
-    };
 
     public static void StopLoopSE()
     {
@@ -251,6 +232,8 @@ public class SoundManager
         public const float smallNumber = 0.00001f;
         public const float changePitch = .3f;
 
+        public Dictionary<string,string> seDictionary = new Dictionary<string,string>();
+
         protected override void Awake()
         {
             base.Awake();
@@ -268,6 +251,14 @@ public class SoundManager
             {
                 SetVolumeLevel((MixerExposedParameter)i, MixerVolumeClass.INITIAL_LEVEL);
             }
+
+            //SeDictionaryロード
+
+            //Fake
+            seDictionary.Add("Enter", "Sound/SE/enter");
+            seDictionary.Add("Walk", "Sound/SE/walk");
+            seDictionary.Add("Text", "Sound/SE/text");
+            seDictionary.Add("Cursor", "Sound/SE/cursor");
         }
 
         private Const.InterpolateType InterpolateType = Const.InterpolateType.AccelDecel;

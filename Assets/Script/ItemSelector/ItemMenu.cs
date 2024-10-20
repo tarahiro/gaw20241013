@@ -95,13 +95,13 @@ namespace gad20241013.ItemSelector
         {
             if (Input.GetKeyDown(KeyCode.LeftArrow)){
                 Focus((index + m_items.Count - 1) % m_items.Count);
-                SoundManager.PlaySE(SoundManager.SELabel.Cursor);
+                SoundManager.PlaySE("Cursor");
                 return true;
             }
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 Focus((index + m_items.Count + 1) % m_items.Count);
-                SoundManager.PlaySE(SoundManager.SELabel.Cursor);
+                SoundManager.PlaySE("Cursor");
                 return true;
             }
 
@@ -116,7 +116,7 @@ namespace gad20241013.ItemSelector
 
         void Decide()
         {
-            SoundManager.PlaySE(SoundManager.SELabel.Enter);
+            SoundManager.PlaySE("Enter");
             isDecided = true;
             decideSubject.OnNext(index);
         }
