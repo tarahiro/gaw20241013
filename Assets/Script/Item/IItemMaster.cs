@@ -1,14 +1,16 @@
-﻿namespace gad20241013.Item
+﻿using Tarahiro.MasterData;
+using Tarahiro;
+
+namespace gad20241013.Item
 {
     /// <summary>
     /// アイテムのデータ一つあたりのマスターです。
     /// </summary>
-    public interface IItemMaster
+    public interface IItemMaster : IIdentifiable, IIndexable
     {
         /// <summary>
         /// このデータのIDを取得します。
         /// </summary>
-        string Id { get; }
 
         string DisplayName { get; }
         string Description { get; }

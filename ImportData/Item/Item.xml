@@ -9,15 +9,19 @@
   <Author>h t</Author>
   <LastAuthor>h t</LastAuthor>
   <Created>2021-10-25T13:58:26Z</Created>
-  <LastSaved>2024-10-08T12:58:21Z</LastSaved>
+  <LastSaved>2024-10-20T07:32:53Z</LastSaved>
   <Version>16.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>15800</WindowHeight>
-  <WindowWidth>32767</WindowWidth>
+  <SupBook>
+   <Path> </Path>
+   <SheetName> </SheetName>
+  </SupBook>
+  <WindowHeight>10160</WindowHeight>
+  <WindowWidth>16210</WindowWidth>
   <WindowTopX>32767</WindowTopX>
   <WindowTopY>32767</WindowTopY>
   <RefModeR1C1/>
@@ -104,7 +108,8 @@
    x:FullRows="1" ss:DefaultColumnWidth="52.5" ss:DefaultRowHeight="18">
    <Column ss:AutoFitWidth="0" ss:Width="30"/>
    <Column ss:AutoFitWidth="0" ss:Width="46.5"/>
-   <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="108.5"/>
+   <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="316.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="108.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="24.5" ss:StyleID="s62">
     <Cell ss:StyleID="s63" ss:ArrayRange="RC"
      ss:Formula="=MID( CELL(&quot;filename&quot;,R1C1),&#10;FIND(&quot;[&quot;, CELL(&quot;filename&quot;,R1C1)) +1,&#10;FIND(&quot;]&quot;, CELL(&quot;filename&quot;,R1C1)) - FIND(&quot;[&quot;, CELL(&quot;filename&quot;,R1C1)) -1)"><Data
@@ -113,11 +118,11 @@
    <Row ss:Index="4" ss:AutoFitHeight="0" ss:Height="17.5" ss:StyleID="s64">
     <Cell ss:StyleID="s65"><Data ss:Type="String">index</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Id</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">displayName</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">description</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">itemSpritePath</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">DisplayName</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Description</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">SpritePath</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="31.5">
     <Cell ss:StyleID="s67"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">FireStone</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">ほのおの石</Data></Cell>
@@ -127,7 +132,7 @@
     <Cell ss:StyleID="s67" ss:Formula="=CONCAT(凡例!R2C,Script!RC[-3])"><Data
       ss:Type="String">ItemSelector/FireStone</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="31.5">
     <Cell ss:StyleID="s67"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">IceStone</Data></Cell>
     <Cell ss:StyleID="s67"><PhoneticText
@@ -137,7 +142,7 @@
     <Cell ss:StyleID="s67" ss:Formula="=CONCAT(凡例!R2C,Script!RC[-3])"><Data
       ss:Type="String">ItemSelector/IceStone</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="31.5">
     <Cell ss:StyleID="s67"><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">WindStone</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">かぜの石</Data></Cell>
@@ -145,7 +150,7 @@
     <Cell ss:StyleID="s67" ss:Formula="=CONCAT(凡例!R2C,Script!RC[-3])"><Data
       ss:Type="String">ItemSelector/WindStone</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="31.5">
     <Cell ss:StyleID="s67"><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">PastMirror</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">むかしの魔鏡</Data></Cell>
@@ -153,7 +158,7 @@
     <Cell ss:StyleID="s67" ss:Formula="=CONCAT(凡例!R2C,Script!RC[-3])"><Data
       ss:Type="String">ItemSelector/PastMirror</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="31.5">
     <Cell ss:StyleID="s67"><Data ss:Type="Number">4</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">FutureMirror</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">みらいの魔鏡</Data></Cell>
@@ -161,7 +166,7 @@
     <Cell ss:StyleID="s67" ss:Formula="=CONCAT(凡例!R2C,Script!RC[-3])"><Data
       ss:Type="String">ItemSelector/FutureMirror</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="31.5">
     <Cell ss:StyleID="s67"><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">GreatBar</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">グレートバール</Data></Cell>
@@ -169,7 +174,7 @@
     <Cell ss:StyleID="s67" ss:Formula="=CONCAT(凡例!R2C,Script!RC[-3])"><Data
       ss:Type="String">ItemSelector/GreatBar</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="31.5">
     <Cell ss:StyleID="s67"><Data ss:Type="Number">6</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">PoisonCure</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">どくけしくすり</Data></Cell>
@@ -177,7 +182,7 @@
     <Cell ss:StyleID="s67" ss:Formula="=CONCAT(凡例!R2C,Script!RC[-3])"><Data
       ss:Type="String">ItemSelector/PoisonCure</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="31.5">
     <Cell ss:StyleID="s67"><Data ss:Type="Number">7</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">ParalysisCure</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">まひけしぐすり</Data></Cell>
@@ -205,29 +210,15 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>10</ActiveRow>
-     <ActiveCol>9</ActiveCol>
+     <ActiveRow>11</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R5C1:R7C5,R8C1:R12C1</Range>
-   <Condition>
-    <Value1>LEN(TRIM(RC))=0</Value1>
-    <Format Style='background:#E7E6E6'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R8C2:R10C5</Range>
-   <Condition>
-    <Value1>LEN(TRIM(RC))=0</Value1>
-    <Format Style='background:#E7E6E6'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R11C2:R12C5</Range>
+   <Range>R5C1:R12C5</Range>
    <Condition>
     <Value1>LEN(TRIM(RC))=0</Value1>
     <Format Style='background:#E7E6E6'/>
@@ -237,10 +228,10 @@
  <Worksheet ss:Name="凡例">
   <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="52" ss:DefaultRowHeight="18">
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:Index="5" ss:StyleID="s65"><Data ss:Type="String">itemSpritePath</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:Index="5"><Data ss:Type="String">ItemSelector/</Data></Cell>
    </Row>
   </Table>
@@ -250,6 +241,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>

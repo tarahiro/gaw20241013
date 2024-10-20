@@ -10,15 +10,24 @@ namespace gad20241013.ItemSelector
 {
     public class ItemSelector : IItemSelector
     {
-        List<IItem> m_item;
+        ISomethingProvider<IItem> m_itemProvider;
+
+        List<IItem> m_itemList;
 
         IItemMenu m_itemMenu;
         IItemReceivable m_itemReceivable;
 
-        public ItemSelector(IItemMenu itemMenu, List<IItem> items)
+        public ItemSelector(IItemMenu itemMenu, ISomethingProvider<IItem> itemProvider)
         {
-            m_item = items;
+            m_itemProvider = itemProvider;
             m_itemMenu = itemMenu;
+
+            m_itemList = new List<IItem>();
+
+            for(int i = 0; i < itemProvider.Count; i++)
+            {
+                m_itemList.Add(itemProvider.TryGetFromIndex(i));
+            }
         }
 
         public async UniTask RunItemDialog(IItemReceivable receivable)
@@ -27,7 +36,7 @@ namespace gad20241013.ItemSelector
             m_itemReceivable = receivable;
 
             //アイテムメニューに設定を渡す
-            m_itemMenu.SetItemList(m_item);
+            m_itemMenu.SetItemList(m_itemList);
             m_itemMenu.Decided.Subscribe(SetSelectItem);
 
             //アイテムメニュー開始
@@ -36,7 +45,7 @@ namespace gad20241013.ItemSelector
 
         void SetSelectItem(int itemIndex)
         {
-            m_itemReceivable.RecieveItem(m_item[itemIndex]);
+            m_itemReceivable.RecieveItem(m_itemList[itemIndex]);
 
         }
     }

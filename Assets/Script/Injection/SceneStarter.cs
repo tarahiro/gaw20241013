@@ -22,20 +22,14 @@ namespace gad20241013.Injection
         {
 
             //必要なインスタンスを生成
-            var itemMasterDataProvider = new MasterDataProvider<ItemMasterData.Record, IMasterDataRecord<IItemMaster>>("Data/Item");
+            var itemMasterDataProvider = new ItemMasterDataProvider();
             var itemProvider = new ItemProvider(itemMasterDataProvider);
-
-            List<IItem> itemList = new List<IItem>();
-            for (int i = 0; i < itemProvider.Count; i++)
-            {
-                itemList.Add(itemProvider.TryGetFromIndex(i));
-            }
 
             var itemMenu = new ItemMenu();
             var talkManager = new TalkManager();
             var doctor = new Doctor();
             var sceneFader = new SceneFader.SceneFader();
-            var ItemSelector = new ItemSelector.ItemSelector(itemMenu,itemList);
+            var ItemSelector = new ItemSelector.ItemSelector(itemMenu,itemProvider);
             var clearTelop = new ClearTelop();
             var endingTelop = new EndingTelop();
             var openingFactory = new OpeningFactory(talkManager, sceneFader, doctor);

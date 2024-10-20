@@ -9,12 +9,11 @@ using JetBrains.Annotations;
 using TMPro;
 using LitMotion;
 using System.Threading;
-using gad20241013.Talk.Assets.Script.Talk;
-using UnityEditor;
+using Tarahiro;
 
 namespace gad20241013.Talk
 {
-    public class TalkManager : ITalkManager, ITalkCountRecieve
+    public class TalkManager : ITalkManager
     {
         GameObject m_talkBg;
         TextMeshProUGUI m_talkTmp;
@@ -65,20 +64,5 @@ namespace gad20241013.Talk
 
         }
 
-        public void SetText(string text)
-        {
-            m_talkTmp.text = text;
-        }
-
-        public void End()
-        {
-
-        }
-
-        public async UniTask RecieveSkipInput(TalkCounter talkCounter, CancellationToken cancellationToken)
-        {
-            await UniTask.WaitUntil(() => Input.GetKeyDown(KeyCode.Z));
-            talkCounter.SkipText();
-        } 
     }
 }
