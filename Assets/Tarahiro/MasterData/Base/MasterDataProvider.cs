@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Tarahiro.MasterData
 {
-    public abstract class MasterDataProvider<DataType, InterfaceType>
+    public class MasterDataProvider<DataType, InterfaceType>
         : IMasterDataProvider<InterfaceType>
         where InterfaceType : IIndexable, IIdentifiable
         where DataType : InterfaceType

@@ -1,7 +1,9 @@
 {
     "name": "Tarahiro.Sound",
     "rootNamespace": "Tarahiro.Sound",
-    "references": [],
+    "references": [
+        "GUID:0be27b54e10228743974a8df3dda3639"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

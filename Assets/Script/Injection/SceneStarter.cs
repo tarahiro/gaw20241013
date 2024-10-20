@@ -22,7 +22,7 @@ namespace gad20241013.Injection
         {
 
             //必要なインスタンスを生成
-            var itemMasterDataProvider = new ItemMasterDataProvider("Data/Item");
+            var itemMasterDataProvider = new MasterDataProvider<ItemMasterData.Record, IMasterDataRecord<IItemMaster>>("Data/Item");
             var itemProvider = new ItemProvider(itemMasterDataProvider);
 
             List<IItem> itemList = new List<IItem>();

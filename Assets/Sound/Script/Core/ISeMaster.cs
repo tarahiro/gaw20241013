@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Tarahiro.Sound
 {
-    public class ISeMaster
+    public interface ISeMaster
     {
 
         /// <summary>

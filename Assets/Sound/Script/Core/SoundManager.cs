@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Tarahiro.Sound;
+using Tarahiro.MasterData;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -20,13 +22,13 @@ public class SoundManager
 /// </summary>
     public static GameObject PlaySE(string seLabel, MixerLabel MixerName = MixerLabel.EventSE, bool IsLoop = false)
     {
-        return SoundMgr.Instance.dummyInstantiate(Resources.Load<GameObject>("SoundManager/" + MixerDicionary[MixerName] + "Source"), Resources.Load<AudioClip>(SoundMgr.Instance.seDictionary[seLabel]), IsLoop);
+        return SoundMgr.Instance.dummyInstantiate(Resources.Load<GameObject>("SoundManager/" + MixerDicionary[MixerName] + "Source"), Resources.Load<AudioClip>(SoundMgr.Instance.seMasterDataProvider.TryGetFromId(seLabel).GetMaster().SePath), IsLoop);
     }
 
     public static GameObject PlaySEWithChangePitch(string seLabel, MixerLabel MixerName = MixerLabel.EventSE, bool IsLoop = false, float ChangePitch = SoundMgr.changePitch)
     {
 
-        return SoundMgr.Instance.dummyInstantiateWithChangePitch(Resources.Load<GameObject>("SoundManager/" + MixerDicionary[MixerName] + "Source"), Resources.Load<AudioClip>(SoundMgr.Instance.seDictionary[seLabel]), IsLoop,ChangePitch);
+        return SoundMgr.Instance.dummyInstantiateWithChangePitch(Resources.Load<GameObject>("SoundManager/" + MixerDicionary[MixerName] + "Source"), Resources.Load<AudioClip>(SoundMgr.Instance.seMasterDataProvider.TryGetFromId(seLabel).GetMaster().SePath), IsLoop,ChangePitch);
 
     }
 
@@ -86,12 +88,12 @@ public class SoundManager
 
     public static GameObject PlaySEWithLoop(string seLabel, MixerLabel MixerName = MixerLabel.EventSE)
     {
-        return SoundMgr.Instance.dummyInstantiateLoopSE(Resources.Load<GameObject>("SoundManager/" + MixerDicionary[MixerName] + "Source"), Resources.Load<AudioClip>(SoundMgr.Instance.seDictionary[seLabel]));
+        return SoundMgr.Instance.dummyInstantiateLoopSE(Resources.Load<GameObject>("SoundManager/" + MixerDicionary[MixerName] + "Source"), Resources.Load<AudioClip>(SoundMgr.Instance.seMasterDataProvider.TryGetFromId(seLabel).GetMaster().SePath));
     }
 
     public static GameObject PlayRefleshSE(string seLabel, MixerLabel MixerName = MixerLabel.EventSE, bool IsLoop = false)
     {
-        return SoundMgr.Instance.dummyInstantiateRefleshSE(Resources.Load<GameObject>("SoundManager/" + MixerDicionary[MixerName] + "Source"), Resources.Load<AudioClip>(SoundMgr.Instance.seDictionary[seLabel]), IsLoop);
+        return SoundMgr.Instance.dummyInstantiateRefleshSE(Resources.Load<GameObject>("SoundManager/" + MixerDicionary[MixerName] + "Source"), Resources.Load<AudioClip>(SoundMgr.Instance.seMasterDataProvider.TryGetFromId(seLabel).GetMaster().SePath), IsLoop);
     }
 
 
@@ -232,7 +234,7 @@ public class SoundManager
         public const float smallNumber = 0.00001f;
         public const float changePitch = .3f;
 
-        public Dictionary<string,string> seDictionary = new Dictionary<string,string>();
+        public IMasterDataProvider<IMasterDataRecord<ISeMaster>> seMasterDataProvider;
 
         protected override void Awake()
         {
@@ -253,12 +255,7 @@ public class SoundManager
             }
 
             //SeDictionaryロード
-
-            //Fake
-            seDictionary.Add("Enter", "Sound/SE/enter");
-            seDictionary.Add("Walk", "Sound/SE/walk");
-            seDictionary.Add("Text", "Sound/SE/text");
-            seDictionary.Add("Cursor", "Sound/SE/cursor");
+            seMasterDataProvider = new MasterDataProvider<SeMasterData.Record, IMasterDataRecord<ISeMaster>>("Data/Se");
         }
 
         private Const.InterpolateType InterpolateType = Const.InterpolateType.AccelDecel;
@@ -380,7 +377,6 @@ public class SoundManager
         {
             SoundObjectList.Add(dummyInstantiate(obj, audioClip, IsLoop));
             return SoundObjectList[SoundObjectList.Count - 1];
-
         }
 
 
