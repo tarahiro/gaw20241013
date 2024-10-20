@@ -11,11 +11,11 @@ namespace gad20241013.Injection
     {
         ITalkManager m_talkManager;
         IItemSelector m_itemDialog;
-        ItemProvider m_itemProvider;
+        ISomethingProvider<IItem> m_itemProvider;
         ITelop m_clearTelop;
         ITalkCharacter m_doctor;
 
-        public CycleFactory(ITalkManager talkManager, IItemSelector itemDialog, ItemProvider itemProvider, ITelop clearTelop, ITalkCharacter doctor)
+        public CycleFactory(ITalkManager talkManager, IItemSelector itemDialog, ISomethingProvider<IItem> itemProvider, ITelop clearTelop, ITalkCharacter doctor)
         {
             m_talkManager = talkManager;
             m_itemDialog = itemDialog;

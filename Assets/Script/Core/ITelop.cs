@@ -9,6 +9,6 @@ namespace gad20241013
 {
     public interface ITelop
     {
-        UniTask Enter();
+        UniTask Enter(string text, float waitTime);
     }
 }

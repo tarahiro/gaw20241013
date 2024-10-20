@@ -19,6 +19,8 @@ namespace gad20241013
             m_openingFactory = openingFactory;
             m_cycleFactory = cycleFactory;
             m_endingFactory = endingFactory;
+
+            Main().Forget();
         }
 
         public async UniTask Main()

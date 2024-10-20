@@ -76,7 +76,7 @@ namespace gad20241013
 
             //クリア演出
             Debug.Log("クリア演出");
-            await m_clearTelop.Enter();
+            await m_clearTelop.Enter("クリア！",1f);
 
             //モンスター帰る
             Debug.Log("モンスター帰る");

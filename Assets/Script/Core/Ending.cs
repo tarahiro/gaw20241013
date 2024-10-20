@@ -29,7 +29,7 @@ namespace gad20241013
             await Talk(m_talkSource);
 
             //テロップ表示
-            await m_endingTelop.Enter();
+            await m_endingTelop.Enter("The End!",2f);
 
             //画面をフェードアウト
             await m_sceneFader.SceneEnd();
